@@ -1,0 +1,34 @@
+#task-list-container {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#task {
+  width: 100%;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0px;
+}
+
+#task-list .completed .task-content {
+  text-decoration: line-through;
+}
+
+#task-list li > * {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.task-content {
+  min-width: 300px;
+}
+
+.check, .delete {
+  cursor: pointer;
+  width: 20px;
+}
