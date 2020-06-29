@@ -1,3 +1,7 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 #task-list-container {
   width: 400px;
   margin: 0 auto;
@@ -6,8 +10,17 @@
   justify-content: center;
 }
 
+#task-container {
+  padding: 10px 0px;
+}
+
 #task {
   width: 100%;
+  height: 28px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  font-family: 'Source Code Pro', monospace;
 }
 
 #task-list {
@@ -19,13 +32,18 @@
   text-decoration: line-through;
 }
 
+#task-list li {
+  padding: 7px 0px;
+}
+
 #task-list li > * {
-  margin-right: 10px;
+  margin-right: 15px;
   display: inline-block;
 }
 
 .task-content {
   min-width: 300px;
+  font-size: 18px;
 }
 
 .check, .delete {

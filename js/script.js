@@ -21,7 +21,7 @@ taskInput.keypress(function(event) {
 
   const newTaskItem = $(`<li></li>`)
   newTaskItem.append(`<span class="task-content">${inputtedTask}</span>`)
-  newTaskItem.append('<span class="check">☐</span>')
+  newTaskItem.append('<span class="check">⬜</span>')
   newTaskItem.append('<span class="delete">🗑️</span>')
 
   taskList.append(newTaskItem)
@@ -43,7 +43,7 @@ taskInput.keypress(function(event) {
     if (newTaskItem.hasClass("completed")) {
       checkButton.text("☑️")
     } else {
-      checkButton.text("☐")
+      checkButton.text("⬜")
     }
   })
 })
