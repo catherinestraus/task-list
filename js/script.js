@@ -1,50 +1,40 @@
-const ENTER_KEY_CODE = 13
 
-const taskInput = $('#task')
+
+const task = $('#task')
 const taskList = $('#task-list')
 
-taskInput.keypress(function(event) {
+task.keypress(function(e) {
+  if (e.which === 13) {
+    // Some logic here
 
-  // Only respond to the "enter" key code
-  if (event.which !== ENTER_KEY_CODE) {
-    return
+    e.preventDefault()
+
+    const taskContent = task.val()
+    console.log("Task content", taskContent)
+
+    task.val("")
+
+    const newTask = $('<li></li>')
+    newTask.append(`<span class="task-content">${taskContent}</span>`)
+    newTask.append(`<span class="check">⬜</span>`)
+    newTask.append(`<span class="delete">🗑</span>`)
+
+    const checkbox = newTask.find(".check")
+    checkbox.click(function() {
+      if (newTask.hasClass("completed")) {
+        checkbox.text("⬜")
+      } else {
+        checkbox.text("☑️")
+      }
+
+      newTask.toggleClass("completed")
+    })
+
+    const deletebox = newTask.find(".delete")
+    deletebox.click(function() {
+      newTask.remove()
+    })
+
+    taskList.append(newTask)
   }
-
-  // Prevent the cursor from moving down
-  event.preventDefault()
-
-  const inputtedTask = taskInput.val()
-
-  if (!inputtedTask) {
-    return
-  }
-
-  const newTaskItem = $(`<li></li>`)
-  newTaskItem.append(`<span class="task-content">${inputtedTask}</span>`)
-  newTaskItem.append('<span class="check">⬜</span>')
-  newTaskItem.append('<span class="delete">🗑️</span>')
-
-  taskList.append(newTaskItem)
-
-  // Clear the task input
-  taskInput.val("")
-
-  // Assign event listeners to either delete or check
-  const deleteButton = newTaskItem.find(".delete")
-  const checkButton = newTaskItem.find(".check")
-
-  deleteButton.click(function() {
-    newTaskItem.remove()
-  })
-
-  checkButton.click(function() {
-    newTaskItem.toggleClass("completed")
-
-    if (newTaskItem.hasClass("completed")) {
-      checkButton.text("☑️")
-    } else {
-      checkButton.text("⬜")
-    }
-  })
 })
-
